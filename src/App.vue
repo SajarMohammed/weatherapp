@@ -138,7 +138,3 @@ const estTime = today.toLocaleString('en-US', options);
   });
 };
 </script>
-
-<style lang="scss" scoped>
-
-</style>
