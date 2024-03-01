@@ -4,10 +4,10 @@
     <img :src="backgroundImageUrl" alt="" class="object-cover overflow-y-hidden w-full h-full"> 
     <div class="absolute top-0 left-0 flex flex-col items-center ml-[80px] mt-[200px] gap-4 text-white"> 
       <div>
-        <h1 v-if="weatherData" class="text-5xl font-bold font-mono tracking-wide">{{ weatherData.name }}</h1>
+        <h1 v-if="weatherData" class="text-5xl font-bold font-mono ">{{ weatherData.name }}</h1>
       </div>
       <div class="flex gap-4">
-     <h1 v-if="weatherData && weatherData.main" class="text-5xl">
+     <h1 v-if="weatherData && weatherData.main" class="text-6xl">
   {{ getTempInCelsius(weatherData.main.temp) }}°</h1>
   <div>
   <h1 v-if="weatherData && weatherData.weather" class="text-xl font-bold ">{{ weatherData.weather[0].main}}</h1>
@@ -33,7 +33,7 @@
   </div>
   <div class="absolute top-0 right-0 h-[400px] w-[300px] glassmorphism text-white">
     <div class="flex items-center justify-center h-[60px] gap-2">
-    <input type="text" placeholder="search location..." v-model="search" class="w-[180px] h-[30px] bg-inherit pl-4 border-b-2 text-white border-x-white selection:border-none" >
+    <input type="text" placeholder="search location..." v-model="search" class="w-[180px] h-[30px] bg-inherit pl-4 border-b-2 text-white border-x-white " >
     <button @click="searchPlace" class="text-3xl"><Icon icon="ic:outline-search"  style="color: white" /></button>
   </div>
   <h3 class="font-mono text-lg  text-center font-bold tracking-wider">Weather Informations</h3>
