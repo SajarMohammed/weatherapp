@@ -119,10 +119,10 @@ const today = new Date();
 const options = { timeZone: 'America/New_York', hour12: false, hour: '2-digit', minute: '2-digit',  year: '2-digit', month: 'short', day: 'numeric', weekday: 'short' };
 const estTime = today.toLocaleString('en-US', options);
 
- const searchPlace = () =>{
+ const searchPlace = async() =>{
   const apiKey = import.meta.env.VITE_API_KEY
   const apiUrl = import.meta.env.VITE_API_URL
-  axios.get(apiUrl, {
+  await axios.get(apiUrl, {
     params: {
       q: search.value,
       appid: apiKey
