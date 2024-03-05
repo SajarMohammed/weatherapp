@@ -12,24 +12,11 @@
   <div>
   <h1 v-if="weatherData && weatherData.weather" class="text-xl font-bold ">{{ weatherData.weather[0].main}}</h1>
   <span v-if="weatherData && weatherData.weather" class="text-sm">{{ estTime }}</span>
- 
 </div>
-
-   
- <span v-if="weatherData"> 
-  <Icon v-if="weatherData.weather[0].main === 'Clear'" icon="fluent-mdl2:sunny" width="64" height="64"  style="color: white" />
-    <Icon v-else-if="weatherData.weather[0].main === 'Rain'" icon="raphael:rain" width="64" height="64"  style="color: white" /> 
-  <Icon v-else-if="weatherData.weather[0].main === 'Clouds'" icon="fluent-mdl2:cloudy" width="64" height="64"  style="color: white" /> 
- <Icon v-else-if="weatherData.weather[0].main === 'Snow'" icon="mingcute:snow-line" width="64" height="64"  style="color: white" />
- <Icon v-else-if="weatherData.weather[0].main === 'Haze'" icon="bi:cloud-haze2-fill" width="64" height="64"  style="color: white" />
- <Icon v-else-if="weatherData.weather[0].main === 'Thunderstorm'" icon="ic:baseline-thunderstorm" width="64" height="64"  style="color: white" />
- <Icon v-else-if="weatherData.weather[0].main === 'Smoke'" icon="wi:smoke" width="64" height="64"  style="color: white" />
- <Icon  v-else-if="weatherData.weather[0].main === 'Mist'" icon="ri:mist-line" width="64" height="64"  style="color: white" />  
- <Icon v-else-if="weatherData.weather[0].main === 'Drizzle'"  icon="f7:cloud-drizzle" width="64" height="64"  style="color: white" /> 
- <Icon v-else icon="material-symbols:sunny-snowing" width="64" height="64"  style="color: white" />  
+<span v-if="weatherData">
+  <Icon :icon="`${iconUrl.library}:${iconUrl.name}`" width="64" height="64" style="color: white" />
 </span>
-</div>
-</div>
+</div></div>
   </div>
   <div class="absolute top-0 right-0 h-[400px] w-[300px] glassmorphism text-white">
     <div class="flex items-center justify-center h-[60px] gap-2">
@@ -111,6 +98,22 @@ const weatherMapping = {
    'Haze': Haze,
    'Drizzle': Drizzle
 };
+const IconMapping = {
+  'Clear': { library: 'fluent-mdl2', name: 'sunny' },
+  'Rain': { library: 'raphael', name: 'rain' },
+  'Clouds': { library: 'fluent-mdl2', name: 'cloudy' },
+   'Snow':{ library: 'mingcute', name: 'snow-line' },
+   'Smoke': { library: 'wi', name: 'smoke' },
+   'Thunderstorm': { library: 'ic', name: 'baseline-thunderstorm' },
+   'Mist': { library: 'ri', name: 'mist-line' },
+   'Haze':{ library: 'bi', name: 'cloud-haze2-fill' },
+   'Drizzle': { library: 'f7', name: 'cloud-drizzle' },
+};
+
+const iconUrl = computed(() => {
+  const currentIcon = weatherData.value?.weather?.[0]?.main;
+  return IconMapping[currentIcon] ;
+});
 const backgroundImageUrl = computed(() => {
   const currentWeather = weatherData.value?.weather?.[0]?.main;
   return weatherMapping[currentWeather] || Default; 
