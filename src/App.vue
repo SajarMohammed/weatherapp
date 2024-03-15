@@ -30,7 +30,7 @@
      <span class="font-mono">Temp Max</span>
       <div class="flex gap-2 items-center">
     <span> {{ getTempInCelsius(weatherData.main.temp_max) }}°C </span>
-    <Icon icon="ion:thermometer-outline"  style="color: red" />
+    <Icon icon="ion:thermometer-outline"  />
    </div>
   </div>
   <div class="flex justify-between">
